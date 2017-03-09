@@ -123,7 +123,7 @@ public class TestHands {
 			h.AddCardToHand(new Card(eRank.FIVE,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.FIVE,eSuit.SPADES));
 			h.AddCardToHand(new Card(eRank.FIVE,eSuit.HEARTS));
-			h.AddCardToHand(new Card(eRank.SIX,eSuit.DIAMONDS));		
+			h.AddCardToHand(new Card(eRank.NINE,eSuit.DIAMONDS));		
 			h.EvaluateHand();
 			
 			//	Hand better be a full house
@@ -131,7 +131,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//	HI hand better be 'Four'
-			assertEquals(eRank.SIX.getiRankNbr(),
+			assertEquals(eRank.NINE.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 			
 			//	LO hand better be 'Three'
@@ -173,8 +173,8 @@ public class TestHands {
 			Hand h = new Hand();
 			h.AddCardToHand(new Card(eRank.THREE,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.THREE,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));
+			h.AddCardToHand(new Card(eRank.SIX,eSuit.CLUBS));
+			h.AddCardToHand(new Card(eRank.SIX,eSuit.DIAMONDS));
 			h.AddCardToHand(new Card(eRank.SEVEN,eSuit.SPADES));		
 			h.EvaluateHand();
 			
@@ -183,7 +183,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//		HI hand better be 'Four'
-			assertEquals(eRank.FOUR.getiRankNbr(),
+			assertEquals(eRank.SIX.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 			
 			//		LO hand better be 'Three'
@@ -203,8 +203,8 @@ public class TestHands {
 			h.AddCardToHand(new Card(eRank.TWO,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.THREE,eSuit.DIAMONDS));
 			h.AddCardToHand(new Card(eRank.THREE,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.SEVEN,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.SEVEN,eSuit.SPADES));		
+			h.AddCardToHand(new Card(eRank.JACK,eSuit.DIAMONDS));
+			h.AddCardToHand(new Card(eRank.JACK,eSuit.SPADES));		
 			h.EvaluateHand();
 			
 			//		Hand better be a two pair
@@ -212,7 +212,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//		HI hand better be 'seven'
-			assertEquals(eRank.SEVEN.getiRankNbr(),
+			assertEquals(eRank.JACK.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 			
 			//		LO hand better be 'Three'
@@ -230,8 +230,8 @@ public class TestHands {
 		public void TestPair() {
 			
 			Hand h = new Hand();
-			h.AddCardToHand(new Card(eRank.NINE,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.NINE,eSuit.DIAMONDS));
+			h.AddCardToHand(new Card(eRank.TEN,eSuit.CLUBS));
+			h.AddCardToHand(new Card(eRank.TEN,eSuit.DIAMONDS));
 			h.AddCardToHand(new Card(eRank.SIX,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.EIGHT,eSuit.DIAMONDS));
 			h.AddCardToHand(new Card(eRank.FIVE,eSuit.SPADES));		
@@ -242,7 +242,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//		HI hand better be 'Four'
-			assertEquals(eRank.NINE.getiRankNbr(),
+			assertEquals(eRank.TEN.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 		
 			//		Pair has three kickers.
@@ -303,32 +303,6 @@ public class TestHands {
 			assertEquals(eRank.NINE,
 					h.getHandScore().getKickers().get(0).geteRank());
 		}
-		@Test
-		public void TestPair4() {
-			
-			Hand h = new Hand();
-			h.AddCardToHand(new Card(eRank.NINE,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.SEVEN,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.TWO,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.TWO,eSuit.SPADES));		
-			h.EvaluateHand();
-			
-			//		Hand better be a pair
-			assertEquals(eHandStrength.Pair.getHandStrength(),
-					h.getHandScore().getHandStrength().getHandStrength());
-			
-			//		HI hand better be 'nine'
-			assertEquals(eRank.TWO.getiRankNbr(),
-					h.getHandScore().getHiHand().getiRankNbr());
-		
-			//		Pair has three kickers.
-			assertEquals(3,h.getHandScore().getKickers().size());
-			
-			assertEquals(eRank.NINE,
-					h.getHandScore().getKickers().get(0).geteRank());
-		}
-		
 		
 		@Test
 		public void HighCard() {
@@ -387,9 +361,9 @@ public class TestHands {
 			Hand h = new Hand();
 			h.AddCardToHand(new Card(eRank.THREE,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.TWO,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.SPADES));		
+			h.AddCardToHand(new Card(eRank.FIVE,eSuit.CLUBS));
+			h.AddCardToHand(new Card(eRank.FIVE,eSuit.DIAMONDS));
+			h.AddCardToHand(new Card(eRank.FIVE,eSuit.SPADES));		
 			h.EvaluateHand();
 			
 			//	Hand better be a full house
@@ -397,7 +371,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//	HI hand better be 'Four'
-			assertEquals(eRank.FOUR.getiRankNbr(),
+			assertEquals(eRank.FIVE.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 			
 			//	Full House has no kickers.
@@ -413,9 +387,9 @@ public class TestHands {
 			Hand h = new Hand();
 			h.AddCardToHand(new Card(eRank.SIX,eSuit.CLUBS));
 			h.AddCardToHand(new Card(eRank.TWO,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.CLUBS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));
-			h.AddCardToHand(new Card(eRank.FOUR,eSuit.SPADES));		
+			h.AddCardToHand(new Card(eRank.THREE,eSuit.CLUBS));
+			h.AddCardToHand(new Card(eRank.THREE,eSuit.DIAMONDS));
+			h.AddCardToHand(new Card(eRank.THREE,eSuit.SPADES));		
 			h.EvaluateHand();
 			
 			//	Hand better be a full house
@@ -423,7 +397,7 @@ public class TestHands {
 					h.getHandScore().getHandStrength().getHandStrength());
 			
 			//	HI hand better be 'Four'
-			assertEquals(eRank.FOUR.getiRankNbr(),
+			assertEquals(eRank.THREE.getiRankNbr(),
 					h.getHandScore().getHiHand().getiRankNbr());
 			
 			//	Full House has no kickers.
